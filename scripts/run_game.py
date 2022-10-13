@@ -18,5 +18,5 @@ if __name__ == "__main__":
 
     # Call run() on an instance of the TrainerEnvironment
     # This function automatically manages cleanup
-    score = game.run()
+    score = game.run()   
 
