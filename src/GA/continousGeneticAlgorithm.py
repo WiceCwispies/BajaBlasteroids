@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib as mpl
 import random
-from GA.fitnessFunctions import *
+from GA.fitnessFunction2 import *
 from GA.chromosome import *
 from GA.initializationFunctions import *
 from GA.selectionFunctions import *
