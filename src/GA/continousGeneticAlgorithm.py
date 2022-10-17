@@ -10,8 +10,9 @@ from GA.mutationFunctions import *
 from GA.elitismFunctions import *
 import threading
 
+
 class CGA:
-    def __init__(self,NumberOfChrom,NumbofGenes,maxGen,PC,PM,Er,bounds):
+    def __init__(self, NumberOfChrom, NumbofGenes, maxGen, PC, PM, Er, bounds):
         self.numbChroms = NumberOfChrom
         self.numbGenes = NumbofGenes
         self.maxGen = maxGen
@@ -20,25 +21,37 @@ class CGA:
         self.population = []
         self.Er = Er
         self.bounds = bounds
-            
-    def run(self,initializationFunction,selectionFunction,crossoverFunction,fitnessFunction,mutationFunction,elitismFunction):
-        self.population = initializationFunction(self.numbChroms,self.numbGenes, self.bounds)
+
+    def run(
+        self,
+        initializationFunction,
+        selectionFunction,
+        crossoverFunction,
+        fitnessFunction,
+        mutationFunction,
+        elitismFunction,
+    ):
+        self.population = initializationFunction(
+            self.numbChroms, self.numbGenes, self.bounds
+        )
         for chrom in self.population:
-            print(chrom,"\n")
+            print(chrom, "\n")
         for i in range(self.maxGen):
-            print('Generation: ' + str(i))
-            print('Best Fitness: ' + str(self.getBestChromosome().getFitness()))
+            print("Generation: " + str(i))
+            print("Best Fitness: " + str(self.getBestChromosome().getFitness()))
             # obtain fitness values
             for chrom in self.population:
                 chrom.updateFitness(fitnessFunction(chrom, self.bounds))
             newPop = []
-            a =np.arange(0,self.numbChroms,2)
+            a = np.arange(0, self.numbChroms, 2)
             a = a.tolist()
             for k in a:
                 # crossover
                 parent1, parent2 = selectionFunction(self.population)
-                child1, child2 = crossoverFunction(parent1, parent2,self.numbGenes,self.PC,self.bounds)
-                
+                child1, child2 = crossoverFunction(
+                    parent1, parent2, self.numbGenes, self.PC, self.bounds
+                )
+
                 # mutation
                 child1 = mutationFunction(child1, self.numbGenes, self.PM, self.bounds)
                 child2 = mutationFunction(child2, self.numbGenes, self.PM, self.bounds)
@@ -48,8 +61,8 @@ class CGA:
 
             # update fitness values
             for chrom in newPop:
-                chrom.updateFitness(fitnessFunction(chrom , self.bounds))
-            
+                chrom.updateFitness(fitnessFunction(chrom, self.bounds))
+
             # elitism
             newPop = elitismFunction(self.population, newPop, self.Er)
 
@@ -74,13 +87,23 @@ class CGAThread:
         self.Er = Er
         self.bounds = bounds
 
-    def run(self, initializationFunction, selectionFunction, crossoverFunction, fitnessFunction, mutationFunction, elitismFunction):
-        self.population = initializationFunction(self.numbChroms, self.numbGenes, self.bounds)
+    def run(
+        self,
+        initializationFunction,
+        selectionFunction,
+        crossoverFunction,
+        fitnessFunction,
+        mutationFunction,
+        elitismFunction,
+    ):
+        self.population = initializationFunction(
+            self.numbChroms, self.numbGenes, self.bounds
+        )
         for chrom in self.population:
             print(chrom, "\n")
         for i in range(self.maxGen):
-            print('Generation: ' + str(i))
-            print('Best Fitness: ' + str(self.getBestChromosome().getFitness()))
+            print("Generation: " + str(i))
+            print("Best Fitness: " + str(self.getBestChromosome().getFitness()))
             for chrom in self.population:
                 chrom.updateFitness(fitnessFunction(chrom, self.bounds))
             newPop = []
@@ -90,7 +113,9 @@ class CGAThread:
             for k in a:
                 # crossover
                 parent1, parent2 = selectionFunction(self.population)
-                child1, child2 = crossoverFunction(parent1, parent2, self.numbGenes, self.PC, self.bounds)
+                child1, child2 = crossoverFunction(
+                    parent1, parent2, self.numbGenes, self.PC, self.bounds
+                )
 
                 # mutation
                 child1 = mutationFunction(child1, self.numbGenes, self.PM, self.bounds)
@@ -111,7 +136,7 @@ class CGAThread:
 
             for t in threads:
                 t.join()
-                #chrom.updateFitness(fitnessFunction(chrom, self.bounds))
+                # chrom.updateFitness(fitnessFunction(chrom, self.bounds))
 
             # elitism
             newPop = elitismFunction(self.population, newPop, self.Er)

@@ -6,6 +6,7 @@ from HeiTerryController import FuzzyController
 from fuzzy_asteroids.fuzzy_asteroids import TrainerEnvironment
 from sample_score import SampleScore
 
+
 def AsteriodFitness(chrom, game):
     score = game.run(controller=FuzzyController(chrom), score=SampleScore())
     return score.fitness

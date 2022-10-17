@@ -2,7 +2,7 @@ import numpy as np
 
 
 def inbetween(circle, radius, bound):
-    if bound == 'xaxis':
+    if bound == "xaxis":
         if 0 < circle[0] < 800:
             return True
         elif 0 < circle[0] + radius < 800:
@@ -21,12 +21,16 @@ def inbetween(circle, radius, bound):
         else:
             return False
 
+
 def pointLineDistance(L1, L2, c):
-    return abs((L2[0] - L1[0]) * (L1[1] - c[1]) - (L1[0] - c[0]) * (L2[1] - L1[1])) / np.sqrt(
-        (L2[0] - L1[0]) ** 2 + (L2[1] - L1[1]) ** 2)
+    return abs(
+        (L2[0] - L1[0]) * (L1[1] - c[1]) - (L1[0] - c[0]) * (L2[1] - L1[1])
+    ) / np.sqrt((L2[0] - L1[0]) ** 2 + (L2[1] - L1[1]) ** 2)
+
 
 def distanceFormula(p1, p2):
     return np.sqrt(((p1[0] - p2[0]) ** 2) + ((p1[1] - p2[1]) ** 2))
+
 
 def inRectangle(circle):
     if circle[2] == 1:
@@ -43,28 +47,29 @@ def inRectangle(circle):
     L1 = TL
     L2 = TR
     distance = pointLineDistance(L1, L2, c)
-    if distance < r and inbetween(c, r, 'xaxis'):
+    if distance < r and inbetween(c, r, "xaxis"):
         return [c, r, 1]
     # check right
     L1 = TR
     L2 = BR
     distance = pointLineDistance(L1, L2, c)
-    if distance < r and inbetween(c, r, 'yaxis'):
+    if distance < r and inbetween(c, r, "yaxis"):
         return [c, r, 1]
     # check bottom
     L1 = BL
     L2 = BR
     distance = pointLineDistance(L1, L2, c)
-    if distance < r and inbetween(c, r, 'xaxis'):
+    if distance < r and inbetween(c, r, "xaxis"):
         return [c, r, 1]
     # check left
     L1 = TL
     L2 = BL
     distance = pointLineDistance(L1, L2, c)
-    if distance < r and inbetween(c, r, 'yaxis'):
+    if distance < r and inbetween(c, r, "yaxis"):
         return [c, r, 1]
 
     return [c, r, 0]
+
 
 def findFISInputs(circle, ship, asteriod):
     ship_pos = circle[0]
@@ -104,6 +109,7 @@ def findFISInputs(circle, ship, asteriod):
     relative_heading = -angle + 360
 
     return [distance, relative_heading, closureRate]
+
 
 def findClusterInputs(ship, cluster):
     ship_pos = ship.position

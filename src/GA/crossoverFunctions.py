@@ -44,8 +44,9 @@ def SingleCrossover(parent1, parent2, PC):
 
     return child1, child2
 
+
 if __name__ == "__main__":
-    p1 = Chromosome([0.205,0.1106])
-    p2 = Chromosome([0.3,0.6])
-    c1,c2 = SingleCrossover(p1,p2,1)
-    print(c1,c2)
+    p1 = Chromosome([0.205, 0.1106])
+    p2 = Chromosome([0.3, 0.6])
+    c1, c2 = SingleCrossover(p1, p2, 1)
+    print(c1, c2)

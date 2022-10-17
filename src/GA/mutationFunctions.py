@@ -15,6 +15,6 @@ def asteroidMutation(chromosome, PM):
 
 
 if __name__ == "__main__":
-    p1 = Chromosome([0.205,0.1106])
-    c1 = asteroidMutation(p1,1)
+    p1 = Chromosome([0.205, 0.1106])
+    c1 = asteroidMutation(p1, 1)
     print(c1)
