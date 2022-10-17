@@ -21,12 +21,6 @@ def createUniformInput(numbInputs, numbMems, lbs, ubs, show):
             b = div * i + lbs[n]
             c = (div * i) + div + lbs[n]
             inputMatrix[n].append([a, b, c])
-    if show:
-        plotMembershipFunctions(inputMatrix[0])
-        plt.show()
-        plotMembershipFunctions(inputMatrix[1])
-        plt.show()
-        plotMembershipFunctions(inputMatrix[2])
     return inputMatrix
 
 

@@ -1,5 +1,7 @@
 fuzzy_asteroids
+numpy
+matplotlib
+fuzzy-c-means
 
 # TODO add project dependencies to this file, begin tracking once you
 # have downloaded new dependencies or use `pip freeze > requirements.txt`
-
