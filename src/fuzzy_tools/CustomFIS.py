@@ -62,21 +62,16 @@ class antecedent:
 
     def autoGenerate(self, numb):
         mems = createUniformInput(1, numb, [self.range[0]], [self.range[-1]], False)[0]
-        if numb == 3:
-            classifires = ["0", "1", "2"]
+        classifiers = [str(x) for x in range(numb)]
 
-        for i, mf in enumerate(classifires):
+        for i, mf in enumerate(classifiers):
             self.mfs[mf] = mems[i]
 
     def inputMembershipsFunctions(self, bounds, classifiers=None):
         """
         Takes only triangler membership functions for now.
         """
-        lenBounds = len(bounds)
-        if lenBounds == 3:
-            classifiers = ["0", "1", "2"]
-        elif lenBounds == 2:
-            classifiers = ["0", "1"]
+        classifiers = [str(x) for x in range(len(bounds))]
 
         for i, mf in enumerate(classifiers):
             self.mfs[mf] = bounds[i]
@@ -100,23 +95,16 @@ class Consequent:
 
     def autoGenerate(self, numb):
         mems = createUniformInput(1, numb, [self.range[0]], [self.range[-1]], False)[0]
-        if numb == 3:
-            classifires = ["0", "1", "2"]
-        elif numb == 2:
-            classifires = ["0", "1"]
+        classifiers = [str(x) for x in range(numb)]
 
-        for i, mf in enumerate(classifires):
+        for i, mf in enumerate(classifiers):
             self.mfs[mf] = mems[i]
 
     def inputMembershipsFunctions(self, bounds, classifiers=None):
         """
         Takes only triangler membership functions for now.
         """
-        lenBounds = len(bounds)
-        if lenBounds == 3:
-            classifiers = ["0", "1", "2"]
-        elif lenBounds == 2:
-            classifiers = ["0", "1"]
+        classifiers = [str(x) for x in range(len(bounds))]
 
         for i, mf in enumerate(classifiers):
             self.mfs[mf] = bounds[i]
