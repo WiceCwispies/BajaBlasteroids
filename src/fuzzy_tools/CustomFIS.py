@@ -265,13 +265,13 @@ def main2():
 
     rules = [
         [
-            [["quality", "poor"], ["service", "poor"]],
+            [["quality", "0"], ["service", "0"]],
             ["OR"],
             [["tip", "0"], ["bankaccount", "0"]],
         ],
-        [[["service", "average"]], ["OR"], [["tip", "1"], ["bankaccount", "1"]]],
+        [[["service", "1"]], ["OR"], [["tip", "1"], ["bankaccount", "1"]]],
         [
-            [["quality", "good"], ["service", "good"]],
+            [["quality", "2"], ["service", "2"]],
             ["OR"],
             [["tip", "2"], ["bankaccount", "2"]],
         ],
@@ -280,11 +280,10 @@ def main2():
     FIS.generate_mamdani_rule(rules)
     output = FIS.compute([["quality", 6.5], ["service", 9.8]], "tip")
     output = FIS.compute2Plus(
-        [["quality", 6.5], ["service", 9.8]], ["tip", "bankaccount"]
+        [["quality", 4.1], ["service", 3.8]], ["tip", "bankaccount"]
     )
     print(output)
 
 
 if __name__ == "__main__":
-    # main()
     main2()
