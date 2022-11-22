@@ -19,11 +19,8 @@ if __name__ == "__main__":
                              controller_timeout=True,
                              ignore_exceptions=False)
 
-    scenario_ship = Scenario(name="Multi-Ship",
-                             num_asteroids=4,
-                             ship_states=[{"position": (300, 500), "angle": 180, "lives": 1},
-                                          {"position": (500, 300), "angle": 180, "lives": 5},
-                                          {"position": (400, 300), "angle": 180, "lives": 3},
-                                          ])
+    scenario_ship = Scenario(name="Test",
+                             num_asteroids=1,
+                             ship_states=[{"position": (300, 500), "angle": 180, "lives": 1}])
 
-    score = game.run(controller=FuzzyController(), scenario=scenario_ship)
+    score = game.run(controller=dict({1:FuzzyController(), 2:FuzzyController()}), scenario=scenario_ship)
