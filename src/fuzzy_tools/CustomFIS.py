@@ -62,21 +62,16 @@ class antecedent:
 
     def autoGenerate(self, numb):
         mems = createUniformInput(1, numb, [self.range[0]], [self.range[-1]], False)[0]
-        if numb == 3:
-            classifires = ["0", "1", "2"]
+        classifiers = [str(x) for x in range(numb)]
 
-        for i, mf in enumerate(classifires):
+        for i, mf in enumerate(classifiers):
             self.mfs[mf] = mems[i]
 
     def inputMembershipsFunctions(self, bounds, classifiers=None):
         """
         Takes only triangler membership functions for now.
         """
-        lenBounds = len(bounds)
-        if lenBounds == 3:
-            classifiers = ["0", "1", "2"]
-        elif lenBounds == 2:
-            classifiers = ["0", "1"]
+        classifiers = [str(x) for x in range(len(bounds))]
 
         for i, mf in enumerate(classifiers):
             self.mfs[mf] = bounds[i]
@@ -100,23 +95,16 @@ class Consequent:
 
     def autoGenerate(self, numb):
         mems = createUniformInput(1, numb, [self.range[0]], [self.range[-1]], False)[0]
-        if numb == 3:
-            classifires = ["0", "1", "2"]
-        elif numb == 2:
-            classifires = ["0", "1"]
+        classifiers = [str(x) for x in range(numb)]
 
-        for i, mf in enumerate(classifires):
+        for i, mf in enumerate(classifiers):
             self.mfs[mf] = mems[i]
 
     def inputMembershipsFunctions(self, bounds, classifiers=None):
         """
         Takes only triangler membership functions for now.
         """
-        lenBounds = len(bounds)
-        if lenBounds == 3:
-            classifiers = ["0", "1", "2"]
-        elif lenBounds == 2:
-            classifiers = ["0", "1"]
+        classifiers = [str(x) for x in range(len(bounds))]
 
         for i, mf in enumerate(classifiers):
             self.mfs[mf] = bounds[i]
@@ -265,13 +253,13 @@ def main2():
 
     rules = [
         [
-            [["quality", "poor"], ["service", "poor"]],
+            [["quality", "0"], ["service", "0"]],
             ["OR"],
             [["tip", "0"], ["bankaccount", "0"]],
         ],
-        [[["service", "average"]], ["OR"], [["tip", "1"], ["bankaccount", "1"]]],
+        [[["service", "1"]], ["OR"], [["tip", "1"], ["bankaccount", "1"]]],
         [
-            [["quality", "good"], ["service", "good"]],
+            [["quality", "2"], ["service", "2"]],
             ["OR"],
             [["tip", "2"], ["bankaccount", "2"]],
         ],
@@ -280,11 +268,10 @@ def main2():
     FIS.generate_mamdani_rule(rules)
     output = FIS.compute([["quality", 6.5], ["service", 9.8]], "tip")
     output = FIS.compute2Plus(
-        [["quality", 6.5], ["service", 9.8]], ["tip", "bankaccount"]
+        [["quality", 4.1], ["service", 3.8]], ["tip", "bankaccount"]
     )
     print(output)
 
 
 if __name__ == "__main__":
-    # main()
     main2()
