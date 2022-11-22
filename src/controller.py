@@ -21,7 +21,11 @@ class FuzzyController(ControllerBase):
         """
         Create your fuzzy logic controllers and other objects here
         """
-        pass
+        super().__init__()
+        
+    def name(self):
+        return "Baja"
+        
 
     def actions(self, ships: List[SpaceShip], input_data: Dict[str, Tuple]) -> None:
         """
@@ -38,7 +42,28 @@ class FuzzyController(ControllerBase):
         :param ships: Object to use when controlling the SpaceShip
         :param input_data: Input data which describes the current state of the environment
         """
-        for ship in ships:
-            # ship.turn_rate = 180.0
-            ship.thrust = ship.thrust_range[1]
-            ship.shoot()
+        print(ships)
+        #for ship in ships:
+
+        ships.turn_rate = 100
+        #ships.thrust = ships.thrust_range[1]
+        ships.shoot()
+        
+
+
+
+
+"""
+
+Ship Logic 
+
+Get Information about the State of the Game
+
+Decide on a target to shoot at
+
+Aim
+
+Shoot
+
+"""
+

@@ -6,7 +6,7 @@ from GA.chromosome import *
 def asteriodInitialize(numbChroms):
     population = []
     for i in range(numbChroms):
-        population.append(Chromosome(np.random.randint(3, size=(2, 54)).tolist()))
+        population.append(Chromosome(np.random.randint(-3, high = 10, size=(3)).tolist()))
     return population
 
 

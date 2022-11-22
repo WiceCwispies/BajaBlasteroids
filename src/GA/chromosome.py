@@ -2,13 +2,13 @@ import numpy as np
 
 
 class Chromosome:
-    def __init__(self, string):
-        self.string = string
+    def __init__(self, gene):
+        self.gene = gene
         self.fitness = 0
         self.normFitness = 0
 
-    def updateString(self, string):
-        self.string = string
+    def updategene(self, gene):
+        self.gene = gene
 
     def updateFitness(self, fitness):
         self.fitness = fitness
@@ -17,11 +17,11 @@ class Chromosome:
         self.normFitness = normFitness
 
     def __str__(self):
-        rstr = "string: " + str(self.string) + "\n" + "fitness: " + str(self.fitness)
+        rstr = "gene: " + str(self.gene) + "\n" + "fitness: " + str(self.fitness)
         return rstr
 
-    def getString(self):
-        return self.string
+    def getgene(self):
+        return self.gene
 
     def getFitness(self):
         return self.fitness
