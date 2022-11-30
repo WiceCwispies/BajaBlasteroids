@@ -42,28 +42,31 @@ class FuzzyController(ControllerBase):
         :param ships: Object to use when controlling the SpaceShip
         :param input_data: Input data which describes the current state of the environment
         """
-        print(ships)
-        #for ship in ships:
-
-        ships.turn_rate = 100
-        #ships.thrust = ships.thrust_range[1]
-        ships.shoot()
+        
+        # for ship in ships:
+        #ships.turn_rate = 23
+        #ships.thrust = ships.thrust_range[0.5]
+        #print("x")
+        print(input_data)
+        #print(input_data['asteroids'][0]['position'][0])
+        if abs(ships.position[0] - input_data['asteroids'][0]['position'][0]) <= 50:
+            ships.shoot()
+            print("he")
         
 
 
 
+    """
 
-"""
+    Ship Logic 
 
-Ship Logic 
+    Get Information about the State of the Game
 
-Get Information about the State of the Game
+    Decide on a target to shoot at
 
-Decide on a target to shoot at
+    Aim
 
-Aim
+    Shoot
 
-Shoot
-
-"""
+    """
 
