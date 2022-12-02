@@ -14,13 +14,20 @@ if __name__ == "__main__":
     }
 
     # Instantiate an instance of FuzzyAsteroidGame
-    game = FuzzyAsteroidGame(settings=settings,
-                             track_compute_cost=True,
-                             controller_timeout=True,
-                             ignore_exceptions=False)
+    game = FuzzyAsteroidGame(
+        settings=settings,
+        track_compute_cost=True,
+        controller_timeout=True,
+        ignore_exceptions=False,
+    )
 
-    scenario_ship = Scenario(name="Test",
-                             num_asteroids=1,
-                             ship_states=[{"position": (300, 500), "angle": 180, "lives": 1}])
+    scenario_ship = Scenario(
+        name="Test",
+        num_asteroids=1,
+        ship_states=[{"position": (300, 500), "angle": 180, "lives": 1}],
+    )
 
-    score = game.run(controller=dict({1:FuzzyController(), 2:FuzzyController()}), scenario=scenario_ship)
+    score = game.run(
+        controller=dict({1: FuzzyController(), 2: FuzzyController()}),
+        scenario=scenario_ship,
+    )

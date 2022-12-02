@@ -17,15 +17,15 @@ class FuzzyController(ControllerBase):
 
     By defining these interfaces, this class will work correctly
     """
+
     def __init__(self):
         """
         Create your fuzzy logic controllers and other objects here
         """
         super().__init__()
-        
+
     def name(self):
         return "Baja"
-        
 
     def actions(self, ships: List[SpaceShip], input_data: Dict[str, Tuple]) -> None:
         """
@@ -42,19 +42,16 @@ class FuzzyController(ControllerBase):
         :param ships: Object to use when controlling the SpaceShip
         :param input_data: Input data which describes the current state of the environment
         """
-        
+
         # for ship in ships:
-        #ships.turn_rate = 23
-        #ships.thrust = ships.thrust_range[0.5]
-        #print("x")
+        # ships.turn_rate = 23
+        # ships.thrust = ships.thrust_range[0.5]
+        # print("x")
         print(input_data)
-        #print(input_data['asteroids'][0]['position'][0])
-        if abs(ships.position[0] - input_data['asteroids'][0]['position'][0]) <= 50:
+        # print(input_data['asteroids'][0]['position'][0])
+        if abs(ships.position[0] - input_data["asteroids"][0]["position"][0]) <= 50:
             ships.shoot()
             print("he")
-        
-
-
 
     """
 
@@ -69,4 +66,3 @@ class FuzzyController(ControllerBase):
     Shoot
 
     """
-
