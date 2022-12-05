@@ -6,6 +6,7 @@ class SampleScore(Score):
     """
     Sample of how to modify the Score class
     """
+
     def __init__(self):
         """
         Define constructor
@@ -30,4 +31,4 @@ class SampleScore(Score):
 
         :param environment: AsteroidGame environment instance
         """
-        self.average_number_asteroids = sum(self.number_asteroids)/self.frame_count
+        self.average_number_asteroids = sum(self.number_asteroids) / self.frame_count

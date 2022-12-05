@@ -6,6 +6,7 @@ class SampleScore(Score):
     """
     Sample of how to modify the Score class
     """
+
     def __init__(self):
         """
         Define constructor

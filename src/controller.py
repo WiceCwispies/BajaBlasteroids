@@ -17,6 +17,7 @@ class FuzzyController(ControllerBase):
 
     By defining these interfaces, this class will work correctly
     """
+
     def __init__(self):
         """
         Create your fuzzy logic controllers and other objects here
@@ -87,4 +88,3 @@ class FuzzyController(ControllerBase):
     Shoot
 
     """
-
