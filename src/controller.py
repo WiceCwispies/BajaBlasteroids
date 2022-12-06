@@ -43,24 +43,26 @@ class FuzzyController(ControllerBase):
         :param ships: Object to use when controlling the SpaceShip
         :param input_data: Input data which describes the current state of the environment
         """
+
         
+
         frame = input_data['frame']
+        # print(frame)
         time = input_data['time']
+        # print(time)
         stopping_condition = input_data['stopping_condition']
+        # print(stopping_condition)
         asteroids = input_data['asteroids']
+        # print(asteroids)
         map_dimensions = input_data['map_dimensions']
+        # print(map_dimensions)
         bullets = input_data['bullets']
+        # print(bullets)
         ships_info = input_data['ships']
-        ship_position = ships_info['position']
-        
-
-        print(input_data)
-        #print(frame)
-        #print(time)
-        #print(stopping_condition)
-        #print(map_dimensions)
-
-
+        # print(ships_info)
+        # print('test')
+        # BROKEN CURRENTLY 
+        # ship_position = ships_info(0)['position']
 
         # for ship in ships:
         #ships.turn_rate = 23
@@ -70,7 +72,7 @@ class FuzzyController(ControllerBase):
         #print(input_data['asteroids'][0]['position'][0])
         if abs(ships.position[0] - asteroids[0]['position'][0]) <= 150:
             ships.shoot()
-            #print("he")
+            print("he")
         
 
 
