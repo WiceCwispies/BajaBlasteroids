@@ -23,10 +23,9 @@ class FuzzyController(ControllerBase):
         Create your fuzzy logic controllers and other objects here
         """
         super().__init__()
-        
+
     def name(self):
         return "Baja"
-        
 
     def actions(self, ships: List[SpaceShip], input_data: Dict[str, Tuple]) -> None:
         """
@@ -43,37 +42,31 @@ class FuzzyController(ControllerBase):
         :param ships: Object to use when controlling the SpaceShip
         :param input_data: Input data which describes the current state of the environment
         """
-        
-        frame = input_data['frame']
-        time = input_data['time']
-        stopping_condition = input_data['stopping_condition']
-        asteroids = input_data['asteroids']
-        map_dimensions = input_data['map_dimensions']
-        bullets = input_data['bullets']
-        ships_info = input_data['ships']
-        ship_position = ships_info['position']
-        
+
+        frame = input_data["frame"]
+        time = input_data["time"]
+        stopping_condition = input_data["stopping_condition"]
+        asteroids = input_data["asteroids"]
+        map_dimensions = input_data["map_dimensions"]
+        bullets = input_data["bullets"]
+        ships_info = input_data["ships"]
+        ship_position = ships_info["position"]
 
         print(input_data)
-        #print(frame)
-        #print(time)
-        #print(stopping_condition)
-        #print(map_dimensions)
-
-
+        # print(frame)
+        # print(time)
+        # print(stopping_condition)
+        # print(map_dimensions)
 
         # for ship in ships:
-        #ships.turn_rate = 23
-        #ships.thrust = ships.thrust_range[0.5]
-        #print("x")
+        # ships.turn_rate = 23
+        # ships.thrust = ships.thrust_range[0.5]
+        # print("x")
         # print(asteroids)
-        #print(input_data['asteroids'][0]['position'][0])
-        if abs(ships.position[0] - asteroids[0]['position'][0]) <= 150:
+        # print(input_data['asteroids'][0]['position'][0])
+        if abs(ships.position[0] - asteroids[0]["position"][0]) <= 150:
             ships.shoot()
-            #print("he")
-        
-
-
+            # print("he")
 
     """
 
