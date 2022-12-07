@@ -23,10 +23,9 @@ class FuzzyController(ControllerBase):
         Create your fuzzy logic controllers and other objects here
         """
         super().__init__()
-        
+
     def name(self):
         return "Baja"
-        
 
     def actions(self, ships: List[SpaceShip], input_data: Dict[str, Tuple]) -> None:
         """
@@ -86,9 +85,9 @@ class FuzzyController(ControllerBase):
 
         ships.shoot()
         # for ship in ships:
-        #ships.turn_rate = 23
-        #ships.thrust = ships.thrust_range[0.5]
-        #print("x")
+        # ships.turn_rate = 23
+        # ships.thrust = ships.thrust_range[0.5]
+        # print("x")
         # print(asteroids)
         #print(input_data['asteroids'][0]['position'][0])
         # if abs(ships.position[0] - asteroids[0]['position'][0]) <= 150:
