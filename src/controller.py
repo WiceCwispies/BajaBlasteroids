@@ -52,38 +52,63 @@ class FuzzyController(ControllerBase):
         stopping_condition = input_data['stopping_condition']
         # print(stopping_condition)
         asteroids = input_data['asteroids']
-        print(asteroids)
+        # print(asteroids)
         map_dimensions = input_data['map_dimensions']
         # print(map_dimensions)
         bullets = input_data['bullets']
         # print(bullets)
         ships_info = input_data['ships']
-        # print(ships_info)
+        print(ships_info)
         # print('test')
         # BROKEN CURRENTLY 
         # ship_position = ships_info(0)['position']
-
-        # ships_info[]
 
         # # AIMING
 
         ship_x = ships_info[0]['position'][0]
         ship_y = ships_info[0]['position'][1]
         ship_position = [ship_x, ship_y]
+
         speed = 800
+
         asteroid_x = asteroids[0]['position'][0]
         asteroid_y = asteroids[0]['position'][1]
         asteroid_position = [asteroid_x, asteroid_y]
+
         asteroid_x_speed = asteroids[0]['velocity'][0]
         asteroid_y_speed = asteroids[0]['velocity'][1]
         asteroid_velocity = [asteroid_x_speed, asteroid_y_speed]
+
         firing_angle = find_desired_angle(ship_position, speed, asteroid_position, asteroid_velocity)
 
-        while abs(firing_angle) - abs(ships_info[0]['angle']) > 2:
-            ships.turn_rate = 20
+        if ships_info[0]['angle'] < 0:
+            ships_info[0]['angle'] = ships_info[0]['angle'] + 360
+
+        x = 0
+
+        for x in asteroids:
+            # How do I iterate through the asteroids?
+            asteroid_x = asteroids[x]['position'][0]
+            asteroid_y = asteroids[x]['position'][1]
+            asteroid_position = [asteroid_x, asteroid_y]
+
+            asteroid_x_speed = asteroids[x]['velocity'][0]
+            asteroid_y_speed = asteroids[x]['velocity'][1]
+            asteroid_velocity = [asteroid_x_speed, asteroid_y_speed]
+
+            firing_angle = find_desired_angle(ship_position, speed, asteroid_position, asteroid_velocity)
+            
+            if abs(firing_angle - ships_info[0]['angle']) > 0.5:
+                ships.turn_rate = 20
+            else:
+                ships.turn_rate = 0
+                print(firing_angle)
+                print(ships_info[0]['angle'])
+                ships.shoot()
 
 
-        ships.shoot()
+
+
         # for ship in ships:
         # ships.turn_rate = 23
         # ships.thrust = ships.thrust_range[0.5]

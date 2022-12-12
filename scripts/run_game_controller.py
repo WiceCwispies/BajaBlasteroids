@@ -6,7 +6,7 @@ from src.controller import FuzzyController
 if __name__ == "__main__":
     # Available settings
     settings = {
-        "frequency": 60,
+        "frequency": 20,
         "real_time_multiplier": 2,
         "graphics_on": True,
         "sound_on": False,
