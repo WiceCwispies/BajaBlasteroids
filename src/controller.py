@@ -71,29 +71,17 @@ class FuzzyController(ControllerBase):
 
         speed = 800
 
-        asteroid_x = asteroids[0]['position'][0]
-        asteroid_y = asteroids[0]['position'][1]
-        asteroid_position = [asteroid_x, asteroid_y]
-
-        asteroid_x_speed = asteroids[0]['velocity'][0]
-        asteroid_y_speed = asteroids[0]['velocity'][1]
-        asteroid_velocity = [asteroid_x_speed, asteroid_y_speed]
-
-        firing_angle = find_desired_angle(ship_position, speed, asteroid_position, asteroid_velocity)
-
-        if ships_info[0]['angle'] < 0:
+        while ships_info[0]['angle'] < 0:
             ships_info[0]['angle'] = ships_info[0]['angle'] + 360
-
-        x = 0
 
         for x in asteroids:
             # How do I iterate through the asteroids?
-            asteroid_x = asteroids[x]['position'][0]
-            asteroid_y = asteroids[x]['position'][1]
+            asteroid_x = x['position'][0]
+            asteroid_y = x['position'][1]
             asteroid_position = [asteroid_x, asteroid_y]
 
-            asteroid_x_speed = asteroids[x]['velocity'][0]
-            asteroid_y_speed = asteroids[x]['velocity'][1]
+            asteroid_x_speed = x['velocity'][0]
+            asteroid_y_speed = x['velocity'][1]
             asteroid_velocity = [asteroid_x_speed, asteroid_y_speed]
 
             firing_angle = find_desired_angle(ship_position, speed, asteroid_position, asteroid_velocity)
