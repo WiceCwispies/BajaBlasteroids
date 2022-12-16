@@ -85,8 +85,14 @@ class FuzzyController(ControllerBase):
             asteroid_velocity = [asteroid_x_speed, asteroid_y_speed]
 
             firing_angle = find_desired_angle(ship_position, speed, asteroid_position, asteroid_velocity)
+
+            abs_distance = ((asteroid_x-ship_x)**2 + (asteroid_y + ship_y)**2)**0.5
+            # Optimize these distance and angle things by hand or ga
+            # This method of checking the current angle and comparing is NOT GOOD! Leads to shots being lead or not lead enough because the ship is rotating before it reaches the angle. 
+            # Included a quick distance measure so the angle we have is smaller at larger distances
+            # Think the angle to make a shot in pool at 5 ft vs 20 ft
             
-            if abs(firing_angle - ships_info[0]['angle']) > 0.5:
+            if abs(firing_angle - ships_info[0]['angle']) + (abs_distance/3000) > 1:
                 ships.turn_rate = 20
             else:
                 ships.turn_rate = 0
