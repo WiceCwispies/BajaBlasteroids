@@ -46,17 +46,11 @@ class FuzzyController(ControllerBase):
         
 
         frame = input_data['frame']
-        # print(frame)
         time = input_data['time']
-        # print(time)
         stopping_condition = input_data['stopping_condition']
-        # print(stopping_condition)
         asteroids = input_data['asteroids']
-        # print(asteroids)
         map_dimensions = input_data['map_dimensions']
-        # print(map_dimensions)
         bullets = input_data['bullets']
-        # print(bullets)
         ships_info = input_data['ships']
         print(ships_info)
         # print('test')
@@ -70,12 +64,14 @@ class FuzzyController(ControllerBase):
         ship_position = [ship_x, ship_y]
 
         speed = 800
+        abs_distance = 1000000
 
         while ships_info[0]['angle'] < 0:
             ships_info[0]['angle'] = ships_info[0]['angle'] + 360
 
         for x in asteroids:
             # How do I iterate through the asteroids?
+            print("tested")
             asteroid_x = x['position'][0]
             asteroid_y = x['position'][1]
             asteroid_position = [asteroid_x, asteroid_y]
@@ -84,21 +80,37 @@ class FuzzyController(ControllerBase):
             asteroid_y_speed = x['velocity'][1]
             asteroid_velocity = [asteroid_x_speed, asteroid_y_speed]
 
-            firing_angle = find_desired_angle(ship_position, speed, asteroid_position, asteroid_velocity)
+            # firing_angle = find_desired_angle(ship_position, speed, asteroid_position, asteroid_velocity)
 
-            abs_distance = ((asteroid_x-ship_x)**2 + (asteroid_y + ship_y)**2)**0.5
+            abs_distance_temp = ((asteroid_x-ship_x)**2 + (asteroid_y + ship_y)**2)**0.5
+
+            if abs_distance_temp < abs_distance:
+                abs_distance = abs_distance_temp
+                closest_asteroid = x
+
             # Optimize these distance and angle things by hand or ga
             # This method of checking the current angle and comparing is NOT GOOD! Leads to shots being lead or not lead enough because the ship is rotating before it reaches the angle. 
             # Included a quick distance measure so the angle we have is smaller at larger distances
             # Think the angle to make a shot in pool at 5 ft vs 20 ft
-            
-            if target_aquired(ship_position, speed, asteroid_position, asteroid_velocity, ships_info):
-                ships.turn_rate = 0
-                print(firing_angle)
-                print(ships_info[0]['angle'])
-                ships.shoot()
-            else:
-                ships.turn_rate = 20
+        
+
+        asteroid_x = closest_asteroid['position'][0]
+        asteroid_y = closest_asteroid['position'][1]
+        asteroid_position = [asteroid_x, asteroid_y]
+
+        asteroid_x_speed = closest_asteroid['velocity'][0]
+        asteroid_y_speed = closest_asteroid['velocity'][1]
+        asteroid_velocity = [asteroid_x_speed, asteroid_y_speed]
+
+        closest = target_closest(ship_position, speed, asteroid_position, asteroid_velocity, ships_info)
+
+        if closest == 0:
+            ships.turn_rate = 0
+            ships.shoot()
+        elif closest == 1:
+            ships.turn_rate = 50
+        elif closest == -1:
+            ships.turn_rate = -50
 
             # if abs(firing_angle - ships_info[0]['angle']) + (abs_distance/3000) > 1:
             #     ships.turn_rate = 20
