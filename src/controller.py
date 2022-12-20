@@ -2,7 +2,7 @@ from typing import Tuple, Dict, Any, List
 
 from fuzzy_asteroids.fuzzy_controller import ControllerBase, SpaceShip
 from src.vector_utils.trajectories import *
-
+from src.aim_utils.targeting import *
 class FuzzyController(ControllerBase):
     """
     Class to be used by UC Fuzzy Challenge competitors to create a fuzzy logic controller
@@ -92,13 +92,21 @@ class FuzzyController(ControllerBase):
             # Included a quick distance measure so the angle we have is smaller at larger distances
             # Think the angle to make a shot in pool at 5 ft vs 20 ft
             
-            if abs(firing_angle - ships_info[0]['angle']) + (abs_distance/3000) > 1:
-                ships.turn_rate = 20
-            else:
+            if target_aquired(ship_position, speed, asteroid_position, asteroid_velocity, ships_info):
                 ships.turn_rate = 0
                 print(firing_angle)
                 print(ships_info[0]['angle'])
                 ships.shoot()
+            else:
+                ships.turn_rate = 20
+
+            # if abs(firing_angle - ships_info[0]['angle']) + (abs_distance/3000) > 1:
+            #     ships.turn_rate = 20
+            # else:
+            #     ships.turn_rate = 0
+            #     print(firing_angle)
+            #     print(ships_info[0]['angle'])
+            #     ships.shoot()
 
 
 
