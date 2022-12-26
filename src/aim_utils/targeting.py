@@ -45,7 +45,6 @@ def target_closest(input_data):
         ships_info[0]['angle'] = ships_info[0]['angle'] + 360
 
     print("---------------")
-    print(asteroids)
     for x in asteroids:
         asteroid_x = x['position'][0]
         asteroid_y = x['position'][1]
@@ -59,6 +58,7 @@ def target_closest(input_data):
 
         abs_distance_temp = ((asteroid_x-ship_x)**2 + (asteroid_y + ship_y)**2)**0.5
         if abs_distance_temp < abs_distance:
+            print(x)
             abs_distance = abs_distance_temp
             closest_asteroid = x
 

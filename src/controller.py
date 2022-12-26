@@ -3,7 +3,6 @@ from typing import Tuple, Dict, Any, List
 from fuzzy_asteroids.fuzzy_controller import ControllerBase, SpaceShip
 from src.vector_utils.trajectories import *
 from src.aim_utils.targeting import *
-from threading import Thread
 
 class FuzzyController(ControllerBase):
     """
