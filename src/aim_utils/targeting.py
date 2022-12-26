@@ -18,9 +18,7 @@ def target_first(
     else:
         return True
 
-def target_closest(
-    input_data
-):
+def target_closest(input_data):
 
     frame = input_data['frame']
     time = input_data['time']
@@ -46,9 +44,9 @@ def target_closest(
     while ships_info[0]['angle'] < 0:
         ships_info[0]['angle'] = ships_info[0]['angle'] + 360
 
+    print("---------------")
+    print(asteroids)
     for x in asteroids:
-        # How do I iterate through the asteroids?
-        print("tested")
         asteroid_x = x['position'][0]
         asteroid_y = x['position'][1]
         asteroid_position = [asteroid_x, asteroid_y]
@@ -60,7 +58,6 @@ def target_closest(
         # firing_angle = find_desired_angle(ship_position, speed, asteroid_position, asteroid_velocity)
 
         abs_distance_temp = ((asteroid_x-ship_x)**2 + (asteroid_y + ship_y)**2)**0.5
-
         if abs_distance_temp < abs_distance:
             abs_distance = abs_distance_temp
             closest_asteroid = x
@@ -69,7 +66,6 @@ def target_closest(
         # This method of checking the current angle and comparing is NOT GOOD! Leads to shots being lead or not lead enough because the ship is rotating before it reaches the angle. 
         # Included a quick distance measure so the angle we have is smaller at larger distances
         # Think the angle to make a shot in pool at 5 ft vs 20 ft
-    
 
     asteroid_x = closest_asteroid['position'][0]
     asteroid_y = closest_asteroid['position'][1]

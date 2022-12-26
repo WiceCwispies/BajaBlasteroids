@@ -3,6 +3,8 @@ from typing import Tuple, Dict, Any, List
 from fuzzy_asteroids.fuzzy_controller import ControllerBase, SpaceShip
 from src.vector_utils.trajectories import *
 from src.aim_utils.targeting import *
+from threading import Thread
+
 class FuzzyController(ControllerBase):
     """
     Class to be used by UC Fuzzy Challenge competitors to create a fuzzy logic controller
@@ -101,9 +103,10 @@ class FuzzyController(ControllerBase):
         # asteroid_x_speed = closest_asteroid['velocity'][0]
         # asteroid_y_speed = closest_asteroid['velocity'][1]
         # asteroid_velocity = [asteroid_x_speed, asteroid_y_speed]
+
         if control_mode == "closest":
             closest = target_closest(input_data)
-
+        
             if closest == 0:
                 ships.turn_rate = 0
                 ships.shoot()

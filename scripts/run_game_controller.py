@@ -23,7 +23,7 @@ if __name__ == "__main__":
 
     scenario_ship = Scenario(
         name="Test",
-        num_asteroids=1,
+        num_asteroids=3,
         ship_states=[{"position": (300, 500), "angle": 180, "lives": 1}],
     )
 

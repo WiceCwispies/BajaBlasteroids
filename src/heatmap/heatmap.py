@@ -19,6 +19,8 @@ def generate_heatmap(
         heatmap[asteroid_position[1], asteroid_position[0]] += 1
     return heatmap
 
+def heatmap_decision():
+    x = 0
 
 if __name__ == "__main__":
     asteroids_positions = [[1, 1], [2, 1], [2, 1], [2, 2], [1, 2]]
