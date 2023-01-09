@@ -1,4 +1,5 @@
-from fuzzy_asteroids.game import AsteroidGame
+from kesslergame.kessler_game import KesslerGame
+
 
 if __name__ == "__main__":
     # Settings dictionary
@@ -14,7 +15,7 @@ if __name__ == "__main__":
 
     # To use the controller within the context of a training solution
     # It is important to not create a new instance of the environment everytime
-    game = AsteroidGame(settings=settings)
+    game = KesslerGame(settings=settings)
 
     # Call run() on an instance of the TrainerEnvironment
     # This function automatically manages cleanup

@@ -1,5 +1,4 @@
-from fuzzy_asteroids.fuzzy_asteroids import TrainerEnvironment
-
+from kesslergame.kessler_game import TrainerEnvironment
 from src.controller import FuzzyController
 from examples.example_score import SampleScore
 
