@@ -1,5 +1,5 @@
-from fuzzy_asteroids.util import Score
-from fuzzy_asteroids.game import AsteroidGame
+from kesslergame.score import Score
+from kesslergame.kessler_game import KesslerGame
 
 
 class SampleScore(Score):
@@ -17,7 +17,7 @@ class SampleScore(Score):
         # Constructor for this class should not miss call to parent class constructor
         super().__init__()
 
-    def timestep_update(self, environment: AsteroidGame) -> None:
+    def timestep_update(self, environment: KesslerGame) -> None:
         """
         This function is called after the evaluation of each game time step
 
@@ -25,7 +25,7 @@ class SampleScore(Score):
         """
         self.number_asteroids.append(len(environment.asteroid_list))
 
-    def final_update(self, environment: AsteroidGame) -> None:
+    def final_update(self, environment: KesslerGame) -> None:
         """
         This function is called after the completion of the game
 

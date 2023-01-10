@@ -1,5 +1,5 @@
-from fuzzy_asteroids.util import Scenario
-from fuzzy_asteroids.game import AsteroidGame
+from kesslergame.scenario import Scenario
+from kesslergame.kessler_game import KesslerGame
 
 # A scenario with randomly placed 3 asteroids
 # We recommend always using the `name`, as this puts the Scenario name into the
@@ -67,5 +67,5 @@ portfolio = [
 ]
 
 if __name__ == "__main__":
-    game = AsteroidGame()
+    game = KesslerGame()
     score = game.run(scenario=scenario_ships)

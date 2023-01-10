@@ -1,5 +1,5 @@
-from fuzzy_asteroids.fuzzy_controller import *
-from fuzzy_asteroids.fuzzy_asteroids import FuzzyAsteroidGame, Scenario
+from kesslergame.kessler_game import KesslerGame
+from kesslergame.scenario import Scenario
 from src.controller import FuzzyController
 
 
@@ -14,7 +14,7 @@ if __name__ == "__main__":
     }
 
     # Instantiate an instance of FuzzyAsteroidGame
-    game = FuzzyAsteroidGame(
+    game = KesslerGame(
         settings=settings,
         track_compute_cost=True,
         controller_timeout=True,
